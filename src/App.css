@@ -1,0 +1,748 @@
+/*======================================== configuración de fuentes ======================================= */
+
+@font-face {
+  font-family: 'BwModelica';
+  src: url('./assets/font/BwModelica-Black.otf') format('opentype');
+  font-weight: 900; /* Peso más pesado */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'BwModelica';
+  src: url('./assets/font/BwModelica-Bold.otf') format('opentype');
+  font-weight: 700; /* Peso bold */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'BwModelica';
+  src: url('./assets/font/BwModelica-Medium.otf') format('opentype');
+  font-weight: 500; /* Peso medio */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'BwModelica';
+  src: url('./assets/font/BwModelica-Regular.otf') format('opentype');
+  font-weight: 400; /* Peso normal */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'BwModelica';
+  src: url('./assets/font/BwModelica-Light.otf') format('opentype');
+  font-weight: 300; /* Peso ligero */
+  font-style: normal;
+}
+
+body {
+  font-family: 'BwModelica', sans-serif;
+}
+
+h1 {
+  font-family: 'BwModelica', sans-serif;
+  font-weight: 900; /* Modelica Black */
+}
+
+h2 {
+  font-family: 'BwModelica', sans-serif;
+  font-weight: 700; /* Modelica Bold */
+}
+
+h3 {
+  font-family: 'BwModelica', sans-serif;
+  font-weight: 500; /* Modelica Medium */
+}
+
+p {
+  font-family: 'BwModelica', sans-serif;
+  font-weight: 400; /* Modelica Regular */
+}
+
+.light {
+  font-family: 'BwModelica', sans-serif;
+  font-weight: 300; /* Modelica Light */
+}
+
+/*======================================== navbar ======================================= */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #273243;
+  color: white;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999; 
+  transition: background-color 0.3s ease; /* Agregar una transición para el cambio de color de fondo */
+}
+
+.navbar.transparent {
+  background-color: transparent; /* Hacer la barra de navegación transparente */
+}
+
+.navbar.transparent.openMenu {
+  background-color: #273243; /* Color de fondo cuando el menú sandwich está abierto */
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+}
+
+.logoImage {
+  height: 45px;
+  margin-right: 10px;
+}
+
+.navLinks {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-right: 2rem;
+}
+
+.navLink {
+  margin-left: 2rem;
+  margin-right: 2rem;
+  font-family: 'BwModelica', sans-serif;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.dropdownIcon {
+  font-size: 0.8rem;
+  margin-left: 5px;
+}
+
+.selectedIcon {
+  filter: invert(25%) sepia(20%) saturate(990%) hue-rotate(50deg) brightness(90%) contrast(100%);
+}
+
+.datosContainer {
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+  background-color: #273243;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  width: 200px;
+  color: white;
+  padding: 0;
+}
+
+.dato1 {
+  width: 100%;
+  cursor: pointer;
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.pNavbar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 10px;
+  margin-bottom: 0;
+}
+
+.menuButton {
+  display: none;
+  cursor: pointer;
+}
+
+
+/*======================================== Hover navbar ======================================= */
+.dato1:hover {
+  background-color: #9AC31C; /* Cambia el color de fondo al pasar el cursor sobre el elemento */
+}
+
+.nav-link {
+  position: relative;
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+  transition: color 0.3s ease; /* Agrega transición para el cambio de color de la fuente */
+  margin-right: 3rem;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px; /* Ajusta la posición de la línea */
+  width: 100%;
+  border-bottom: 3px solid transparent;
+  transition: border-color 0.3s ease; /* Agrega transición para el cambio de color de la línea */
+}
+
+.nav-link:hover::after {
+  border-bottom-color: #9AC31C; /* Cambia el color y el estilo de la línea */
+}
+
+/*======================================== Navbar select ======================================= */
+.nav-link.selected {
+  color: #9AC31C; /* Cambia el color del enlace seleccionado */
+}
+.nav-link.selected::after {
+  border-bottom-color: transparent; /* Elimina la línea del enlace seleccionado */
+}
+
+.nav-link .dropdown-icon {
+  transition: color 0.3s ease;
+}
+
+.nav-link.selected .dropdown-icon {
+  color: #9AC31C; /* Cambia el color de la flecha cuando el enlace está seleccionado */
+}
+
+@keyframes girarFlecha {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(180deg); /* Rotar la flecha 180 grados */
+  }
+}
+
+@keyframes revertirGiro {
+  0% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(0deg); /* Revertir la rotación de la flecha */
+  }
+}
+
+.svg-clase {
+  transition: transform 0.3s ease; 
+}
+
+.selected .svg-clase {
+  animation: girarFlecha 0.3s forwards; /* Aplicar la animación cuando el elemento esté seleccionado */
+}
+
+.not-selected .svg-clase {
+  animation: revertirGiro 0.3s forwards; /* Aplicar la animación cuando el elemento ya no esté seleccionado */
+}
+
+.dato:hover {
+  background-color: #9AC31C; /* Cambiar el color del texto a verde al pasar el cursor sobre el párrafo */
+}
+
+/*======================================== Responsividad ======================================= */
+.responsive-icon {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .menuButton {
+      display: block;
+  }
+
+  /* .navbar.transparent {
+    background-color: #273243;
+  } */
+
+  .navLinks {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      background-color: #273243;
+      width: 100%;
+      height: 100vh;
+      text-align: left;
+      padding-top: 20px;
+      padding-left: 20px;
+      z-index: 10;
+  }
+  .navLinks.openMenu {
+      display: flex;
+  }
+
+  .nav-link {
+      margin: 1rem 0;
+      position: relative;
+  }
+  .datosContainer {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: auto;
+    left: auto;
+    background-color: #273243;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    width: 100%;
+    color: white;
+    padding: 0;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .nav-link {
+    margin: 0;
+    width: 95%;
+    min-height: 50px;
+    margin-top: 30px;
+    /* display: none; */
+    align-items: center;
+    border-bottom: 2px solid #9AC31C;
+    padding: 0 1rem; /* Añadir padding para dar espacio al contenido */
+  }
+  .nav-link::after {
+    display: none; /* Oculta la línea del enlace en dispositivos pequeños */
+  }
+  .navbar {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  .responsive-icon {
+    display: inline-block;
+    margin-right: 2rem; /* Espacio entre el icono y el texto */
+  }
+  .dropdownIcon {
+    display: inline-block; /* Muestra la flecha en dispositivos móviles */
+  }
+  .dato1 {
+    height: auto;
+    padding: 1rem 0;
+  }
+}
+
+/*======================================== Header ======================================= */
+
+
+
+
+/*======================================== Testimonials ======================================= */
+
+.testimonial-card {
+  transition: transform 0.3s ease-in-out;
+  transform-origin: top left;
+}
+
+.testimonial-card:hover {
+  transform: scale(1.05);
+}
+
+
+
+
+/*========================================
+  Estilos para el componente Footer
+=======================================*/
+
+
+.footer-container {
+  background-color: #1a2a38;
+  padding: 40px 140px; /* Aumenta el padding para agregar separación */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  color: white;
+  font-family: 'BwModelica', sans-serif;
+  overflow: hidden; /* Evita el desbordamiento */
+}
+
+.footer-main-content {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.footer-bottom-content {
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  padding-top: 20px;
+}
+
+.footer-bottom-content > .libro-reclamaciones {
+  margin: 0 30px;
+}
+
+.footer-bottom-content h3 {
+  margin: 0;
+  font-size: 10px;
+}
+
+.libro-reclamaciones {
+  display: flex;
+  align-items: center;
+}
+
+.copyright {
+  display: flex;
+  align-items: center;
+}
+
+.libro-icon {
+  width: 20px; /* Ajusta el tamaño del ícono según sea necesario */
+  height: 20px;
+  margin-right: 5px;
+}
+
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.logo {
+  width: 169px;
+  height: 57px;
+  margin-bottom: 20px;
+}
+
+.contact-label {
+  font-size: 12px;
+  margin-bottom: 0px;
+}
+
+.contact-form {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.contact-form input {
+  padding: 5px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border: 1px solid #ccc;
+  border-right: none;
+  outline: none;
+  font-size: 14px;
+}
+
+.contact-form input::placeholder {
+  font-size: 10px;
+  color: #929292; /* Ajusta el color del placeholder si es necesario */
+}
+
+.contact-form button {
+  background-color: #a3c239;
+  border: 1px solid #a3c239;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  color: white;
+  font-size: 14px;
+}
+
+.footer-section {
+  margin: 20px;
+  /* word-break: break-word; */
+}
+
+.section-title {
+  color: #a3c239;
+  margin-bottom: 10px;
+  font-size: 16px;
+  line-height: 19.2px;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+}
+
+.list-item {
+  display: flex;
+  align-items: center;
+}
+
+.list-item h3 {
+  font-size: 14px;
+  line-height: 16.8px;
+  margin-left: 10px;
+}
+
+.list-item.small-item h3 {
+  font-size: 12px; /* Ajusta el tamaño de fuente para estos elementos */
+  line-height: 14.4px; /* Ajusta la altura de línea para estos elementos */
+}
+
+.rombo-icon {
+  width: 10px; /* Ajusta el tamaño del ícono según sea necesario */
+  height: 10px;
+}
+
+.no-icon .rombo-icon {
+  visibility: hidden; /* Oculta el ícono de rombo en estos elementos */
+}
+
+.social-media-icons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px; /* Ajusta el margen superior si es necesario */
+  grid-column: 4 / 5;
+  grid-row: 1;
+  height: 0px;
+  margin: 20px;
+  margin-top: 175px;
+  /* align-self: end; */
+}
+
+.ubicanos {
+  grid-column: 4 / 5;
+  grid-row: 1 / 2;
+}
+
+
+.social-media-icon {
+  display: flex;
+  align-items: center;
+}
+
+.social-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* Asegura que los íconos SVG tengan fill blanco */
+.social-icon path {
+  fill: white;
+}
+
+.social-icon:hover path {
+  fill: #a3c239; /* Color al hacer hover */
+}
+
+/* Media queries para hacer el footer responsivo */
+@media (max-width: 1000px) {
+  .footer-container {
+    padding: 20px 20px; /* Reduce el padding en pantallas pequeñas */
+  }
+
+  .footer-main-content {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .logo-container {
+    grid-column: 1 / 2;
+    grid-row: 1;
+    margin-bottom: 0px;
+  }
+
+  .about {
+    grid-column: 1 / 2;
+    grid-row: 1;
+  }
+
+  .footer-section.about {
+    margin-top: 70px;
+    margin-left: 47px;
+    margin-bottom: 0px;
+  }
+
+  .ubicanos {
+    grid-column: 2 / 3;
+    grid-row: 1 / 3;
+  }
+
+  
+
+  .footer-section.ubicanos {
+    margin-top: 25px;
+    word-break: break-word;
+  }
+
+  .footer-section.ubicanos .section-title {
+    margin-bottom: 20px;
+  }
+
+  .footer-bottom-content {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 10px;
+    margin-left: 47px;
+  }
+
+  .footer-bottom-content h3 {
+    font-size: 8px; /* Reduce el tamaño de fuente */
+  }
+
+  .contact-form input,
+  .contact-form button,
+  .list-item h3,
+  .list-item.small-item h3 {
+    font-size: 12px; /* Reduce el tamaño de fuente */
+    margin-left: 0px;
+  }
+
+  .libro-icon {
+    width: 15px; /* Reduce el tamaño del ícono */
+    height: 15px;
+  }
+
+  .social-icon {
+    width: 15px; /* Reduce el tamaño de los íconos sociales */
+    height: 15px;
+  }
+
+  .contact-label,
+  .contact-form,
+  .proyectos,
+  .sobre-ontario-title,
+  .rombo-icon,
+  .rombo-icon.invisible-icon {
+    display: none;
+  }
+
+  .footer-section {
+    margin: 0px;
+    margin-bottom: 20px;
+  }
+
+  .footer-bottom-content > .libro-reclamaciones {
+    margin: 0 0;
+    margin-bottom: 5px;
+    order: -1;
+  }
+
+  .social-media-icons {
+    grid-column: 1 / 2;
+    grid-row: 1;
+    margin: 0px;
+    margin-left: 40px;
+    align-self: end;
+  }
+}
+
+/* Estilos para la página con formulario de sorteo */
+.sorteo-container {
+  padding: 20px;
+  margin-top: 90px;
+  
+}
+.sorteo-header {
+  background: #008000; /* Verde */
+  color: #fff;
+  padding: 10px 0;
+  text-align: center;
+}
+.sorteo-description, .sorteo-form-container, .sorteo-testimonials {
+  background: #fff;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  border-radius: 8px;
+}
+.sorteo-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%; /* Ajuste de ancho */
+  max-width: 600px; /* Ancho máximo */
+  margin: 20px auto; /* Centrado horizontal */
+}
+.sorteo-form-container h2 {
+  color: #008000;
+}
+.form-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.sorteo-form {
+  display: inline-block;
+}
+.form-group {
+  margin-bottom: 15px;
+}
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+.form-group input[type="checkbox"] {
+  width: auto;
+  margin-right: 10px;
+}
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.checkbox-group label {
+  margin: 0;
+}
+.form-group button {
+  display: inline-block;
+  background: #008000;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Estilos para la página sin formulario de sorteo */
+.sorteo-content {
+  display: flex;
+  justify-content: space-between;
+}
+.sorteo-steps {
+  background: #fff;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  flex: 1;
+  margin-right: 20px;
+}
+.sorteo-participants {
+  background: #fff;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  flex: 1;
+}
+.sorteo-steps h2, .sorteo-participants h2, .sorteo-testimonials h2 {
+  color: #008000;
+}
+.step {
+  margin-bottom: 20px;
+}
+.participants-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.participants-table th, .participants-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+.participants-table th {
+  background: #008000;
+  color: #fff;
+}
+
+/* Estilos para testimonios */
+.testimonial {
+  background: #f4f4f4;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}

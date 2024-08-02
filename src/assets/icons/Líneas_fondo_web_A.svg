@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1440 927">
+  <defs>
+    <linearGradient id="Degradado_sin_nombre_44" data-name="Degradado sin nombre 44" x1="1170.1" y1="394" x2="1170.1" y2="5.4" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#add53d"/>
+      <stop offset="1" stop-color="#abd43c"/>
+    </linearGradient>
+    <linearGradient id="Degradado_sin_nombre_44-2" data-name="Degradado sin nombre 44" x1="1171.4" y1="394.2" x2="1171.4" y2="927.5" gradientTransform="translate(1832.3 -510.6) rotate(90)" xlink:href="#Degradado_sin_nombre_44"/>
+  </defs>
+  <path fill="none" stroke="url(#Degradado_sin_nombre_44)" stroke-miterlimit="10" d="M939.7,5.9h396.6c35.5,0,64.3,28.8,64.3,64.3v260.1c0,34.8-28.3,63.1-63.1,63.1h-326c-39.6,0-71.7-32.1-71.7-71.7V5.9h0Z"/>
+  <path fill="none" stroke="url(#Degradado_sin_nombre_44-2)" stroke-miterlimit="10" d="M905.3,431.7h461.7c39,0,70.7,31.7,70.7,70.7v346.7c0,22.6-18.3,40.9-40.9,40.9h-419.7c-39.6,0-71.7-32.1-71.7-71.7v-386.5h0Z" transform="translate(510.6 1832.3) rotate(-90)"/>
+</svg>
